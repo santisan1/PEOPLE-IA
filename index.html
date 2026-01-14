@@ -233,45 +233,6 @@
         class="mt-auto py-10 border-t border-[#dbe0e6] dark:border-slate-800 text-center text-sm text-[#617289] dark:text-slate-500">
         <p>© 2024 PeopleIA. Todos los derechos reservados. Inteligencia Artificial para el Capital Humano.</p>
     </footer>
-
-    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-    
-    <script type="text/javascript">
-        document.getElementById('btn-submit-booking').addEventListener('click', function (e) {
-            e.preventDefault(); // Evita que la página se recargue
-
-            // 1. Capturar datos del formulario
-            const name = document.getElementById('lead-name').value;
-            const email = document.getElementById('lead-email').value;
-            const size = document.getElementById('lead-size').value;
-            const interest = document.getElementById('lead-interest').value;
-
-            // 2. Validación básica
-            if (!name || !email) {
-                alert("Por favor, completa tu nombre y correo corporativo.");
-                return;
-            }
-
-            // 3. (Opcional) Aquí podrías enviar los datos a un Webhook o Google Sheets
-            console.log("Lead capturado:", { name, email, size, interest });
-
-            // 4. Abrir Calendly con los datos precargados
-            // REEMPLAZA 'TU_USUARIO/REUNION' con tu URL real de Calendly
-            Calendly.initPopupWidget({
-                url: 'https://calendly.com/TU_USUARIO/REUNION',
-                prefill: {
-                    name: name,
-                    email: email,
-                    // Si tienes campos personalizados en Calendly, puedes usar 'customAnswers'
-                    customAnswers: {
-                        a1: size,      // Suponiendo que la pregunta 1 es el tamaño
-                        a2: interest   // Suponiendo que la pregunta 2 es el interés
-                    }
-                }
-            });
-        });
-    </script>
 </body>
 
 </html>
