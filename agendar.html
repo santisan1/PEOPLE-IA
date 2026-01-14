@@ -234,28 +234,29 @@
         <p>© 2024 PeopleIA. Todos los derechos reservados. Inteligencia Artificial para el Capital Humano.</p>
     </footer>
     nk href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
     <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 
     <script type="text/javascript">
+        // Buscamos el botón de Continuar al Calendario
         document.getElementById('btn-submit-booking').addEventListener('click', function (e) {
-            e.preventDefault(); // Evita que la página se recargue
+            e.preventDefault();
 
-            // 1. Capturamos los datos que escribió el usuario
-            const nameInput = document.getElementById('lead-name').value;
-            const emailInput = document.getElementById('lead-email').value;
+            // Capturamos los datos del formulario de PeopleIA
+            const name = document.getElementById('lead-name').value;
+            const email = document.getElementById('lead-email').value;
 
-            // 2. Validación: si no pusieron nombre o mail, les avisamos
-            if (!nameInput || !emailInput) {
-                alert("Por favor, completa tu nombre y correo corporativo para continuar.");
+            if (!name || !email) {
+                alert("Por favor, completa tu nombre y correo corporativo.");
                 return;
             }
 
-            // 3. Abrir el Calendly con tu link real y los datos precargados
+            // 2. DISPARAR EL POPUP (Esta es la forma que Calendly permite)
             Calendly.initPopupWidget({
                 url: 'https://calendly.com/pruebaautoowah/people-ai-meeting',
                 prefill: {
-                    name: nameInput,
-                    email: emailInput
+                    name: name,
+                    email: email
                 }
             });
         });
