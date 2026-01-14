@@ -156,14 +156,14 @@
                             <div class="flex flex-col gap-2">
                                 <label class="text-sm font-bold text-[#111418] dark:text-slate-200">Nombre
                                     Completo</label>
-                                <input
+                                <input id="lead-name"
                                     class="rounded-lg border-[#dbe0e6] dark:border-slate-700 dark:bg-slate-800 dark:text-white focus:ring-primary focus:border-primary px-4 py-3 text-sm"
                                     placeholder="Ej. Ana García" type="text" />
                             </div>
                             <div class="flex flex-col gap-2">
                                 <label class="text-sm font-bold text-[#111418] dark:text-slate-200">Email
                                     Corporativo</label>
-                                <input
+                                <input id="lead-email"
                                     class="rounded-lg border-[#dbe0e6] dark:border-slate-700 dark:bg-slate-800 dark:text-white focus:ring-primary focus:border-primary px-4 py-3 text-sm"
                                     placeholder="ana@empresa.com" type="email" />
                             </div>
@@ -172,7 +172,7 @@
                             <div class="flex flex-col gap-2">
                                 <label class="text-sm font-bold text-[#111418] dark:text-slate-200">Tamaño de
                                     Empresa</label>
-                                <select
+                                <select id="lead-size"
                                     class="rounded-lg border-[#dbe0e6] dark:border-slate-700 dark:bg-slate-800 dark:text-white focus:ring-primary focus:border-primary px-4 py-3 text-sm appearance-none">
                                     <option value="">Selecciona una opción</option>
                                     <option value="1-50">1 - 50 empleados</option>
@@ -184,7 +184,7 @@
                             <div class="flex flex-col gap-2">
                                 <label class="text-sm font-bold text-[#111418] dark:text-slate-200">Interés
                                     Principal</label>
-                                <select
+                                <select id="lead-interest"
                                     class="rounded-lg border-[#dbe0e6] dark:border-slate-700 dark:bg-slate-800 dark:text-white focus:ring-primary focus:border-primary px-4 py-3 text-sm appearance-none">
                                     <option value="">¿Qué quieres mejorar?</option>
                                     <option value="cv">Filtrado Inteligente de CV</option>
@@ -202,7 +202,7 @@
                                 placeholder="Cuéntanos un poco sobre tus necesidades..." rows="3"></textarea>
                         </div>
                         <div class="pt-4">
-                            <button
+                            <button id="btn-submit-booking"
                                 class="w-full flex items-center justify-center gap-2 rounded-full bg-primary py-4 text-white font-bold text-base shadow-lg hover:shadow-primary/30 transition-all active:scale-95"
                                 type="submit">
                                 Continuar al Calendario
@@ -233,6 +233,33 @@
         class="mt-auto py-10 border-t border-[#dbe0e6] dark:border-slate-800 text-center text-sm text-[#617289] dark:text-slate-500">
         <p>© 2024 PeopleIA. Todos los derechos reservados. Inteligencia Artificial para el Capital Humano.</p>
     </footer>
+    nk href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+
+    <script type="text/javascript">
+        document.getElementById('btn-submit-booking').addEventListener('click', function (e) {
+            e.preventDefault(); // Evita que la página se recargue
+
+            // 1. Capturamos los datos que escribió el usuario
+            const nameInput = document.getElementById('lead-name').value;
+            const emailInput = document.getElementById('lead-email').value;
+
+            // 2. Validación: si no pusieron nombre o mail, les avisamos
+            if (!nameInput || !emailInput) {
+                alert("Por favor, completa tu nombre y correo corporativo para continuar.");
+                return;
+            }
+
+            // 3. Abrir el Calendly con tu link real y los datos precargados
+            Calendly.initPopupWidget({
+                url: 'https://calendly.com/pruebaautoowah/people-ai-meeting',
+                prefill: {
+                    name: nameInput,
+                    email: emailInput
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
